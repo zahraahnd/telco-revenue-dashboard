@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Embedded Tableau Dashboard</title>
+    <!-- Link to the Embedding API v3 library on the Tableau CDN -->
+    <script type="module" src="https://public.tableau.com/views/TelcoBusinessGrowthRevenueHealthMonitoringDashboard/BusinessHealthGrowth?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"></script>
+</head>
+<body>
+    <h1>My Embedded Tableau Public Viz</h1>
+    <!-- Use the tableau-viz web component -->
+    <tableau-viz
+        id="tableauViz"
+        src="YOUR_TABLEAU_PUBLIC_URL"
+        width="800"
+        height="600"
+        toolbar="bottom"
+    ></tableau-viz>
+</body>
+</html>
