@@ -7,7 +7,173 @@
     <script type="module" src="https://public.tableau.com/views/TelcoBusinessGrowthRevenueHealthMonitoringDashboard/BusinessHealthGrowth?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"></script>
 </head>
 <body>
-    <h1>Business Growth & Revenue Health Monitoring Dashboard</h1>
+  <h1>Business Growth & Revenue Health Monitoring Dashboard</h1>
+
+  <p><strong>Overview (Front Page):</strong></p>
+
+  <blockquote>
+    <p>
+      This dashboard analyzes weekly revenue performance for a Telco company through user base dynamics,
+      breaking growth and decline into retention, acquisition, reactivation, and leakage.
+      It highlights not only what changed, but why it changed, and surfaces near-term revenue exposure
+      driven by user inactivity, to support data-driven growth and retention decisions.
+    </p>
+  </blockquote>
+
+  <h2>Objective</h2>
+
+  <ol>
+    <li>
+      <p><strong>Purpose</strong></p>
+      <p>
+        The objective of this dashboard is to provide a weekly business health snapshot by linking revenue
+        performance with underlying user behavior.
+      </p>
+      <p>
+        This helps to identify whether revenue changes are driven by core retention, new acquisition,
+        reactivation, or user drop, and to detect early signals of potential revenue risk based on
+        inactivity patterns.
+      </p>
+    </li>
+
+    <li>
+      <p><strong>Dataset</strong></p>
+      <p>
+        This dashboard uses a public Telco Customer and Revenue Dataset from Kaggle, including three raw tables:
+      </p>
+      <ul>
+        <li>CRM (13.6M records)</li>
+        <li>Device (2.4M records)</li>
+        <li>Revenue (1.7M records)</li>
+      </ul>
+    </li>
+
+    <li>
+      <p><strong>Tools</strong></p>
+      <ul>
+        <li>SQL: data cleaning, user movement classification, and weekly aggregation</li>
+        <li>Tableau: visualization &amp; dashboard design</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>User Definition</h2>
+
+  <p><strong>Users contributing to the current week's revenue:</strong></p>
+  <ul>
+    <li><strong>Retained</strong>: Users generating revenue in the current week and W-1</li>
+    <li><strong>New</strong>: Users generating revenue for the first time, with no prior revenue history</li>
+    <li><strong>Re-activated</strong>: Users generating revenue in the current week, inactive in W-1, but with at least one revenue-generating week before W-1</li>
+  </ul>
+
+  <p><strong>Users with potential revenue loss:</strong></p>
+  <ul>
+    <li><strong>Dropped</strong>: Users who generate revenue in W-1 but not in the current week (WoW loss)</li>
+    <li>
+      <strong>At-Risk</strong>: Users with no revenue in the current week and 4–7 consecutive weeks of inactivity
+      (no revenue) backwards, indicating exposure to short-term revenue but unconfirmed churn
+    </li>
+  </ul>
+
+  <p>
+    <strong>Churn</strong> is defined as 8 consecutive inactive weeks.
+  </p>
+
+  <p>
+    All user states are created using SQL documented in the attached <code>.sql</code> file.
+  </p>
+
+  <h2>Dashboard Section</h2>
+
+  <ol>
+    <li>
+      <p><strong>Dashboard 1: Weekly Business Health &amp; Growth Snapshot</strong></p>
+      <p>
+        Provides a high-level overview of weekly revenue, user base, and ARPU performance,
+        along with a user movement breakdown to explain what drives revenue changes in the current week.
+      </p>
+    </li>
+
+    <li>
+      <p><strong>Dashboard 2: Near-Term Revenue Exposure &amp; Retention Risk</strong></p>
+      <p>
+        Focuses on users approaching the churn threshold, measuring at-risk user volume
+        and potential revenue loss if no action is taken.
+      </p>
+    </li>
+  </ol>
+
+  <h2>Key Insights</h2>
+
+  <ul>
+    <li>
+      Overall revenue trend shows significant positive growth since W26. However, the
+      <strong>first decreasing event</strong> occurs in the latest week (-2.12%).
+    </li>
+
+    <li>
+      ARPU this week remains stable, indicating the revenue loss is primarily driven by
+      <strong>fewer active users</strong> rather than spending usage per user.
+    </li>
+
+    <li>
+      Based on user movement breakdown, the proportion of dropped users is increasing while
+      the number of new and re-activated users is decreasing, reflected in negative net user change.
+      This indicates the <strong>overall active revenue-generating user base is shrinking this week</strong>.
+    </li>
+
+    <li>
+      By correlating revenue and user trends in Dashboard 1 with the At-Risk Users &amp; Revenue pool
+      trends in Dashboard 2, it is revealed:
+      <ul>
+        <li>
+          Alignment between the at-risk user pool peak in earlier weeks (W28–W30) with revenue declining
+          in the current week, reflecting a <strong>lagged impact of inactive users</strong>.
+        </li>
+        <li>
+          Revenue improvement from W31 onwards aligns with at-risk pool contraction,
+          indicating that <strong>revenue growth coincides with a reduction in at-risk users</strong>.
+        </li>
+        <li>
+          The majority of at-risk users (99.38%) fall into the <strong>4-week inactivity duration</strong>,
+          suggesting possible transition into churn and potential revenue impact around W39
+          if no intervention occurs.
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      In Week 35, retained users performed well with an increased proportion (97%, +2%),
+      indicating a <strong>healthy core of existing users</strong>.
+    </li>
+
+    <li>
+      However, <strong>low shares of new and reactivated users</strong>, combined with a
+      <strong>higher number of dropped users</strong>, contributed to net revenue decline in W35.
+    </li>
+
+    <li>
+      Given the inactivity pattern of at-risk users, continued weakness in acquisition or reactivation
+      could further increase revenue loss in future weeks.
+    </li>
+  </ul>
+
+  <h2>Next Steps &amp; Recommendations</h2>
+
+  <ol>
+    <li>
+      Focus on analysis of the 162 at-risk users, prioritizing those with higher historical ARPU,
+      to design targeted retention actions.
+    </li>
+    <li>
+      Analyze declining new and reactivated users, with emphasis on acquisition channels
+      and reactivation strategies.
+    </li>
+    <li>
+      Monitor the next 3–4 weeks closely to validate whether current at-risk users transition into churn
+      and result in revenue loss.
+    </li>
+  </ol>
     <br>
     <tableau-viz
         id="tableauViz"
@@ -16,29 +182,6 @@
         height="600"
         toolbar="bottom"
     ></tableau-viz>
-    <h2>Objective</h2>
-    <ol>
-        <li>Purpose</li>
-        <p>The objective of this dashboard is to provide a weekly business health snapshot by linking revenue performance with underlying user behavior. </p>
-        <br>
-        <p>This helps to identify whether revenue changes are driven by core retention, new acquisition, reactivation, or user drop, and to detect early signals of potential revenue risk based on inactivity patterns.</p>
 
-        <li>Dataset</li>
-        This dashboard uses a public Telco Customer and Revenue Dataset from Kaggle, including three raw tables :
-        <ul>
-            <li>CRM (13.6M records)</li>
-            <li>Device (2.4M records)</li>
-            <li>Revenue (1.7M records)</li>
-        </ul>
-
-        <li>Tools</li>
-        <ul>
-            <li>SQL : data cleaning, user movement classification, and weekly aggregation</li>
-            <li>Tableau : visualization & dashboard design</li>
-        </ul>
-    </ol>
-
-    <h2>User Definition</h2>
-    Users contribute to the current week's revenue: 
 </body>
 </html>
