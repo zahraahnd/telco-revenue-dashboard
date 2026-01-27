@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Embedded Tableau Dashboard</title>
+    <title>P2 Revenue Dashboard</title>
     <!-- Link to the Embedding API v3 library on the Tableau CDN -->
     <script type="module" src="https://public.tableau.com/views/TelcoBusinessGrowthRevenueHealthMonitoringDashboard/BusinessHealthGrowth?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"></script>
 </head>
 <body>
-    <h1>My Embedded Tableau Public Viz</h1>
+    <h1>Business Growth & Revenue Health Monitoring Dashboard</h1>
+    <br>
     <tableau-viz
         id="tableauViz"
         src="https://public.tableau.com/views/TelcoBusinessGrowthRevenueHealthMonitoringDashboard/BusinessHealthGrowth?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
@@ -15,5 +16,29 @@
         height="600"
         toolbar="bottom"
     ></tableau-viz>
+    <h2>Objective</h2>
+    <ol>
+        <li>Purpose</li>
+        <p>The objective of this dashboard is to provide a weekly business health snapshot by linking revenue performance with underlying user behavior. </p>
+        <br>
+        <p>This helps to identify whether revenue changes are driven by core retention, new acquisition, reactivation, or user drop, and to detect early signals of potential revenue risk based on inactivity patterns.</p>
+
+        <li>Dataset</li>
+        This dashboard uses a public Telco Customer and Revenue Dataset from Kaggle, including three raw tables :
+        <ul>
+            <li>CRM (13.6M records)</li>
+            <li>Device (2.4M records)</li>
+            <li>Revenue (1.7M records)</li>
+        </ul>
+
+        <li>Tools</li>
+        <ul>
+            <li>SQL : data cleaning, user movement classification, and weekly aggregation</li>
+            <li>Tableau : visualization & dashboard design</li>
+        </ul>
+    </ol>
+
+    <h2>User Definition</h2>
+    Users contribute to the current week's revenue: 
 </body>
 </html>
