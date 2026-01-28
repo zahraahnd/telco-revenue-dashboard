@@ -24,7 +24,7 @@
 <body>
     <article class="markdown-body">
         <h1> Business Growth & Revenue Health Monitoring Dashboard</h1>
-        
+        <br>
          <tableau-viz id="tableauViz" 
           src="https://public.tableau.com/views/TelcoBusinessGrowthRevenueHealthMonitoringDashboard/BusinessHealthGrowth?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" 
           width="800px" 
@@ -37,10 +37,8 @@
             <li>
               <p><strong>Purpose</strong></p>
               <p>
-                The objective of this dashboard is to provide a weekly business health snapshot by linking revenue
+                Provide a weekly business health snapshot by linking revenue
                 performance with underlying user behavior.
-              </p>
-              <p>
                 This helps to identify whether revenue changes are driven by core retention, new acquisition,
                 reactivation, or user drop, and to detect early signals of potential revenue risk based on
                 inactivity patterns.
@@ -50,7 +48,9 @@
             <li>
               <p><strong>Dataset</strong></p>
               <p>
-                This dashboard uses a public Telco Customer and Revenue Dataset from Kaggle, including three raw tables:
+                This dashboard uses a public Telco Customer and Revenue Dataset from  
+                  <a href="https://www.kaggle.com/datasets/krishnacheedella/telecom-iot-crm-dataset">Kaggle</a>
+                  , including three raw tables:
               </p>
               <ul>
                 <li>CRM (13.6M records)</li>
@@ -67,6 +67,8 @@
               </ul>
             </li>
           </ol>
+             
+          <p>Please find the Repo <a href="https://github.com/zahraahnd/telco-revenue-dashboard">Here</a> </p>
         
           <br>
           <h2>User Definition</h2>
@@ -84,13 +86,9 @@
             <li>
               <strong>At-Risk</strong>: Users with no revenue in the current week and 4–7 consecutive weeks of inactivity
               (no revenue) backwards, indicating exposure to short-term revenue but unconfirmed churn
+              <br>Churn is defined as 8 consecutive inactive weeks.
             </li>
           </ul>
-        
-          <p>
-            <strong>Churn</strong> is defined as 8 consecutive inactive weeks.
-          </p>
-        
           <p>
             All user states are created using SQL documented in the attached <code>.sql</code> file.
           </p>
